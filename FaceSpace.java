@@ -1,3 +1,4 @@
+package FaceSpace;
 
 public class FaceSpace{
     
@@ -37,7 +38,7 @@ public class FaceSpace{
         graph = newgraph;
         this.graph.setName(numVertices-1, n);
         }
-        else System.out.println("This name has been added already");
+        else System.out.println("This user has already been added!");
 
     }
     public void removeUser(String name) {
@@ -93,8 +94,8 @@ public class FaceSpace{
     public void addFriend(String name1, String name2) {
         int f1 = Search(name1) - 1;
         int f2 = Search(name2) - 1;
-        graph.addEdge(f1, f2);
-        System.out.println(name1 + " and " + name2 + " are friends now");
+            graph.addEdge(f1, f2);
+            System.out.println(name1 + " and " + name2 + " are friends now");
     }
     
     public void removeFriend(String name1, String name2) {

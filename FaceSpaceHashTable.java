@@ -1,3 +1,5 @@
+package FaceSpace;
+
 public class FaceSpaceHashTable<Key, Value> {
 
     private int size;

@@ -1,3 +1,5 @@
+package FaceSpace;
+
 public class ConnectedFaceSpaces {
 
     private boolean visited[];
