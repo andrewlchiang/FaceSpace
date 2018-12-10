@@ -52,7 +52,12 @@ public class FaceGraph {
     public boolean checkEdge(int v, int w) {
         return adj[v][w];
     }
-    
+
+    public Boolean[] getFriends(int v){
+        Boolean[] friends = this.adj[v];
+        return friends;
+    }
+
     public void removeEdge(int v, int w) {
         if(adj[v][w] == true) {
             adj[v][w] = false;

@@ -62,20 +62,4 @@ public class BagArray<Item> implements Bag<Item>, Iterable<Item>{
         return new BagIterator();
     }
 
-    /* FOR TESTING */
-    public static void main(String[] args) {
-        Bag<String> b = new BagArray<String>();
-        b.add("a");
-        b.add("b");
-        b.add("c");
-
-        System.out.println("Bag b elements after adding a, b, and c, in that order");
-        for (String item : b) {
-            System.out.print(item + " ");
-        }
-        System.out.println();
-
-        System.out.println("Bag b contains " + b.size() + " items");
-        System.out.println("Bag b is " + (b.isEmpty() ? "" : "not ") + "empty");
-    }
 }

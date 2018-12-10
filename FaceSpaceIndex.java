@@ -50,19 +50,12 @@ public class FaceSpaceIndex {
                     }
                     break;
                 case "search":
-
-                    //TODO: Make sure user exists
-
                     System.out.println("Enter the name of the user you would like to search for");
                     String searchedname = command.nextLine();
                     System.out.println("Searching for: "+ searchedname);
-
-                    //TODO: List friends if user exists
+                    fs.Search(searchedname);
                     break;
                 case "add friend":
-
-                    //TODO: Make sure invalid users don't crash program
-
                     System.out.println("Add a friend:");
                     System.out.println("Your name");
                     String friendedname1 = command.nextLine();
@@ -71,9 +64,6 @@ public class FaceSpaceIndex {
                     fs.addFriend(friendedname1, friendedname2);
                     break;
                 case "remove friend":
-
-                    //TODO: Make sure invalid users don't crash program
-
                     System.out.println("Remove a friend:");
                     System.out.println("Your name");
                     String defriendedname1 = command.nextLine();
@@ -82,9 +72,12 @@ public class FaceSpaceIndex {
                     fs.removeFriend(defriendedname1, defriendedname2);
                     break;
                 case "find path":
-                    System.out.println("find path function");
-
-                    //TODO:Figure out what algorithm to use
+                    System.out.println("Finding shortest path:");
+                    System.out.println("User 1");
+                    String path1 = command.nextLine();
+                    System.out.println("User 2");
+                    String path2 = command.nextLine();
+                    fs.findPath(path1,path2);
 
                     break;
                 case "exit":

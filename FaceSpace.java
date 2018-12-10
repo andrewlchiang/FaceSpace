@@ -1,5 +1,5 @@
 package FaceSpace;
-
+import java.util.Stack;
 public class FaceSpace{
     
     private FaceGraph graph;
@@ -88,27 +88,65 @@ public class FaceSpace{
     public int Search(String name1) {
         Integer n = hs.hash(name1);
         this.cfs = new ConnectedFaceSpaces(graph, n);
-        return cfs.getIndex() + 1;
+        if(cfs.getIndex() == -1) {
+            System.out.println(name1 + " is not a user");
+            return -1;
+        }
+        Boolean[] friends = this.graph.getFriends(cfs.getIndex());
+        Stack<Integer> friendindex = new Stack<Integer>();
+        for(int i=0; i<this.getNum();i++){
+            if(friends[i]==true) friendindex.push(i);
+        }
+        if(friendindex.isEmpty()) System.out.println(name1 + " is sad and does not have any friends in this face space");
+        else System.out.println(name1 + " has the following friends:");
+        while(!friendindex.isEmpty()){
+            Integer nameoffriend = friendindex.pop();
+            System.out.println(this.getNames(nameoffriend));
+        }
+        return cfs.getIndex();
     }
     
     public void addFriend(String name1, String name2) {
-        int f1 = Search(name1) - 1;
-        int f2 = Search(name2) - 1;
+        Integer n1 = hs.hash(name1);
+        this.cfs = new ConnectedFaceSpaces(graph, n1);
+        int f1 = cfs.getIndex();
+        Integer n2 = hs.hash(name2);
+        this.cfs = new ConnectedFaceSpaces(graph, n2);
+        int f2 = cfs.getIndex();
+        if(f1>=0 && f2>=0) {
             graph.addEdge(f1, f2);
             System.out.println(name1 + " and " + name2 + " are friends now");
+        }
+        else System.out.println("Not both of them are users");
     }
     
     public void removeFriend(String name1, String name2) {
-        int f1 = Search(name1) - 1;
-        int f2 = Search(name2) - 1;
-        graph.removeEdge(f1, f2);
-        System.out.println(name1 + " and " + name2 + " are no longer friends now");
-    }
-    
-    public static void main(String[] args) {
-        
+        Integer n1 = hs.hash(name1);
+        this.cfs = new ConnectedFaceSpaces(graph, n1);
+        int f1 = cfs.getIndex();
+        Integer n2 = hs.hash(name2);
+        this.cfs = new ConnectedFaceSpaces(graph, n2);
+        int f2 = cfs.getIndex();
+        if(f1>=0 && f2>=0) {
+            graph.removeEdge(f1, f2);
+            System.out.println(name1 + " and " + name2 + " are no longer friends now");
+        }
+        else System.out.println("Not both of them are users");
     }
 
-    
+    public void findPath(String name1, String name2) {
+
+        Integer originPath = hs.hash(name1);
+        this.cfs = new ConnectedFaceSpaces(graph, originPath);
+        int f1 = cfs.getIndex();
+        Integer endPath = hs.hash(name2);
+        this.cfs = new ConnectedFaceSpaces(graph, endPath);
+        int f2 = cfs.getIndex();
+        if(f1>=0 && f2>=0) {
+            System.out.println("The distance between " + name1 + " and " + name2 + " is " + cfs.traverse(graph, originPath, endPath));
+        }
+        else System.out.println("Not both of them are users");
+
+    }
 
 }
