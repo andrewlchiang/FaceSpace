@@ -28,6 +28,10 @@ public class FaceGraph {
         }
     }
     
+    public int getNum(){
+        return this.numVertices;            
+    }
+    
     public Integer[] getNames() {
         return this.hashedname;
     }
@@ -37,7 +41,7 @@ public class FaceGraph {
     }
     
     public void setName(int n, int name) {
-        this.hashedname[n-1] = name;
+        this.hashedname[n] = name;
     }
     
     public void addEdge(int v, int w) { 
@@ -52,6 +56,7 @@ public class FaceGraph {
         if(adj[v][w] == true) {
             adj[v][w] = false;
             adj[w][v] = false;
+            System.out.println("They weren't friends anyway");
         }
     }
 }

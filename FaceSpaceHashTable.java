@@ -30,20 +30,21 @@ public class FaceSpaceHashTable<Key, Value> {
     public int getCap() {
         return this.M;
     }
-    public void put(Key key, Value val) {
+    public boolean put(Key key, Value val) {
         if (this.size >= M/2)   // do a resize before it's full, so you have room to handle collisions
             resize(2*M);
         int i;
         for (i = hash(key); keys[i] != null; i = (i+1) % M) {
             if (keys[i].equals(key)) {
                 vals[i] = val;
-                return;
+                return true;
             }
         }
         this.keys[i] = key;
         this.vals[i] = val;
         this.size++;
-        System.out.println(keys[i]);
+        System.out.println(keys[i] + " has been added");
+        return false;
     }
 
     public Value get(Key key) {

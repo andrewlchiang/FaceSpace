@@ -45,12 +45,24 @@ public class FaceSpaceIndex {
                     break;
                 case "search user":
                     System.out.println("search user function");
+                    String searchedname = command.nextLine();
+                    System.out.println(searchedname + " is the number " + fs.Search(searchedname)+ " user");
                     break;
                 case "add friend":
                     System.out.println("add friend function");
+                    System.out.println("say a name");
+                    String friendedname1 = command.nextLine();
+                    System.out.println("say another name");
+                    String friendedname2 = command.nextLine();
+                    fs.addFriend(friendedname1, friendedname2);
                     break;
                 case "remove friend":
                     System.out.println("remove friend function");
+                    System.out.println("say a name");
+                    String defriendedname1 = command.nextLine();
+                    System.out.println("say another name");
+                    String defriendedname2 = command.nextLine();
+                    fs.removeFriend(defriendedname1, defriendedname2);
                     break;
                 case "find path":
                     System.out.println("find path function");
