@@ -1,6 +1,3 @@
-package FaceSpace;
-
-
 public class FaceSpaceHashTable<Key, Value> {
 
     private int size;
@@ -14,7 +11,7 @@ public class FaceSpaceHashTable<Key, Value> {
         this.vals = (Value[]) new Object[M];
     }
 
-    private int hash(Key key) {
+    public int hash(Key key) {
         return (key.hashCode() & 0x7fffffff) % M;
     }
 
@@ -30,6 +27,9 @@ public class FaceSpaceHashTable<Key, Value> {
         this.M = t.M;
     }
 
+    public int getCap() {
+        return this.M;
+    }
     public void put(Key key, Value val) {
         if (this.size >= M/2)   // do a resize before it's full, so you have room to handle collisions
             resize(2*M);
@@ -43,6 +43,7 @@ public class FaceSpaceHashTable<Key, Value> {
         this.keys[i] = key;
         this.vals[i] = val;
         this.size++;
+        System.out.println(keys[i]);
     }
 
     public Value get(Key key) {
@@ -53,6 +54,15 @@ public class FaceSpaceHashTable<Key, Value> {
         return null;
     }
 
+    public Key getKey(Value val) {
+        for (int i = 0; i < M; i++) {
+            if (vals[i] != null && vals[i].equals(val))
+                return keys[i];
+        }
+        System.out.println("null");
+        return null;
+    }
+    
     public boolean contains(Key key) {
         return get(key) != null;
     }

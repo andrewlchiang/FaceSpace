@@ -1,5 +1,3 @@
-package FaceSpace;
-
 import java.util.Scanner;
 
 public class FaceSpaceIndex {
@@ -14,11 +12,11 @@ public class FaceSpaceIndex {
                 "\\_| \\__,_|\\___\\___\\____/| .__/ \\__,_|\\___\\___|\n" +
                 "                        | |                   \n" +
                 "                        |_|                   ");
+        FaceSpace fs = new FaceSpace();
         while(on) {
             System.out.println("Please enter a command, or type 'Help' for more information");
             Scanner command = new Scanner(System.in);
-            String commandString = command.nextLine().toLowerCase();
-            FaceSpaceGraph g = new FaceSpaceGraph(0);
+            String commandString = command.nextLine().toLowerCase(); 
             switch (commandString){
                 case "help":
                     System.out.println("Here are a list of commands you can do:");
@@ -31,6 +29,19 @@ public class FaceSpaceIndex {
                     break;
                 case "add user":
                     System.out.println("add user function");
+                    String addedname = command.nextLine();
+                    fs.addUser(addedname);
+                    break;
+                case "remove user":
+                    System.out.println("remove user function");
+                    String removedname = command.nextLine();
+                    fs.removeUser(removedname);
+                    break;
+                case "user list":
+                    System.out.println("print user list function");
+                    for(int i = 0; i < fs.getNum(); i++) {
+                        System.out.println(fs.getNames(i));
+                    }
                     break;
                 case "search user":
                     System.out.println("search user function");
