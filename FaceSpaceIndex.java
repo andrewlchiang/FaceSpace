@@ -55,11 +55,9 @@ public class FaceSpaceIndex {
 
                     System.out.println("Enter the name of the user you would like to search for");
                     String searchedname = command.nextLine();
-                    System.out.println("Name: "+ searchedname);
+                    System.out.println("Searching for: "+ searchedname);
 
-                    //TODO: List friends
-
-                    System.out.println("Friends: ");
+                    //TODO: List friends if user exists
                     break;
                 case "add friend":
 
@@ -85,6 +83,9 @@ public class FaceSpaceIndex {
                     break;
                 case "find path":
                     System.out.println("find path function");
+
+                    //TODO:Figure out what algorithm to use
+
                     break;
                 case "exit":
                     on = false;
